@@ -2,7 +2,7 @@ const { test, expect } = require('@playwright/test');
 
 var employee = "Raju"
 
-test.only(`Verify logo, title, url visibility - ${employee}`, async ({ page }) => {
+test(`Verify logo, title, url visibility - ${employee}`, async ({ page }) => {
     await page.goto('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login');
 
     await expect(page).toHaveTitle("OrangeHRM");
