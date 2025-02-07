@@ -9,7 +9,7 @@ let page;
 test.describe("Verify Login functionality", async () => {
 
 
-  test('Verify logo visible', async () => {
+  test('Verify logo visible',{ tag: "@smoke"},async () => {
 
 
 
@@ -48,7 +48,7 @@ test.describe("Verify Login functionality", async () => {
 
   test('Verify login with INvalid username and valid password', async ({ page }) => {
 
-    await page.locator("input[name='username']").fill(logindata.invalidusername)
+    await page.locator("//input[@name='username']").fill(logindata.invalidusername)
     await page.locator("input[type='password']").fill(logindata.password)
     await page.locator("button[type='submit']").click()
 
