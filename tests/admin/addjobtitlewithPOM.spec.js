@@ -5,6 +5,8 @@ import { loginPage } from "../../pageObjects/loginPage.po"
 
 import data from "../../testData/login/logindata.json"
 
+import addjobtitledata from "../../testData/admin/addjobtitle.json"
+
 
 test.describe('Verify Job title functionalities', () => {
 
@@ -23,7 +25,7 @@ test.describe('Verify Job title functionalities', () => {
         await login.loginsuccess()
         await jobtitle.gotoaddjobTilePage()
         await jobtitle.navigatedToJobtitlePAge()
-        await jobtitle.filljobTitle("CEO", "Managing company", "no notes")
+        await jobtitle.filljobTitle(addjobtitledata.jobtitle, addjobtitledata.jobdescription, addjobtitledata.notes)
         await jobtitle.viewjobList()
     });
 
