@@ -18,13 +18,21 @@ test.describe("Verify Login functionality", async () => {
   });
 
 
-  test('Verify login with valid credentials', async () => {
+  test.only('Verify login with valid credentials', async () => {
 
+
+    await page.locator('input[name="username"]').fill("Raju")
+    //await page.locator('input[name="username"]').clear()
+
+    await page.locator('input[name="username"]').press("Control + A+ Backspace")
+   // await page.locator('input[name="username"]').press("Backspace")
+
+   //await page.keyboard.press("locator", "Enter")
 
     await page.locator('input[name="username"]').fill(username)
     await page.locator("input[type='password']").fill(password)
-    await page.locator("button[type='submit']").click()
-
+    await page.locator("input[type='password']").press("Enter")
+ // await page.press(input[type='password'], Enter)
     await expect(page).toHaveURL('https://opensource-demo.orangehrmlive.com/web/index.php/dashboard/index')
 
   });

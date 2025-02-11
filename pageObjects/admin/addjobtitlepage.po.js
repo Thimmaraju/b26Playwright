@@ -39,6 +39,7 @@ exports.addJobtitlPage = class addJobtitlPage {
     console.log(r)
     await this.page.locator(this.jobtitleInput).fill(jobtitle+r)
     await this.page.locator(this.jobdiscripInput).fill(jobdiscription)
+    //upload file 
     await this.page.locator(this.addnoteInput).fill(addnote)
     await this.page.locator(this.saveBtn).click()
 
