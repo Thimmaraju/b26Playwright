@@ -92,17 +92,17 @@ test('Working with Radio button - example', async ({ page }) => {
 
 })
 
-test("Working with text", async ({ page }) => {
+test.only("Working with text", async ({ page }) => {
 
     await page.goto("https://www.flipkart.com/")
 
-    await expect(page.locator('//a[@aria-label="Mobiles"]/div/div/span/span')).toHaveText("Mobiles")
+    //await expect(page.locator('//a[@aria-label="Mobiles"]/div/div/span/span')).toHaveText("Raju")
 
     // const textvalue = await page.locator('//a[@aria-label="Mobiles"]/div/div/span/span').textContent()
 
-    // console.log(textvalue)
+    //  console.log(textvalue)
 
-    // const values = await page.locator('//a[@class="_1ch8e_"]/div/div/span/span').allTextContents()
+    //  const values = await page.locator('//a[@class="_1ch8e_"]/div/div/span/span').allTextContents()
 
     // for(let i of values){
     //     console.log(i)
@@ -120,36 +120,36 @@ test("Working with text", async ({ page }) => {
 })
 
 
-test.only("Working with dropdowns - example", async ({ page }) => {
+test("Working with dropdowns - example", async ({ page }) => {
 
     await page.goto('https://register.rediff.com/register/register.php?FormName=user_details')
 
     //text
 
-    //await page.locator('#country').selectOption("Anguilla")
+   // await page.locator('#country').selectOption("Austria")
     //or 
-    //await page.locator('#country').selectOption({label : "Anguilla"})
+   // await page.locator('#country').selectOption({label : "Austria"})
 
     //Value 
 
     //await page.locator('#country').selectOption("8")
     //or
-    //await page.locator('#country').selectOption({value : "9"})
+   // await page.locator('#country').selectOption({value : "9"})
 
     //index
 
-    //await page.locator('#country').selectOption({index : 15})
+    await page.locator('#country').selectOption({index : 15})
 
-    //await expect(page.locator("#country>option")).toHaveCount(248)
+    await expect(page.locator("#country>option")).toHaveCount(248)
 
 
     // const options = await page.$$('#country>option')
 
     // console.log(options.length)
 
-    const dropdown = page.locator('#country'); // Use the correct selector for the dropdown
+     const dropdown = page.locator('#country'); // Use the correct selector for the dropdown
 
-    // Get all option elements within the dropdown
+    // // Get all option elements within the dropdown
     const options = await dropdown.locator('option').allTextContents();
     console.log(options)
     await page.waitForTimeout(5000)

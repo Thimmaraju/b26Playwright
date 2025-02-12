@@ -43,19 +43,19 @@ test.describe('Automation - Working with Alerts', () => {
     await page.waitForTimeout(5000)
   });
 
-  test('Playwright Test Case - test prompt Alert - Ok', async ({ page }) => {
+  test.only('Playwright Test Case - test prompt Alert - Ok', async ({ page }) => {
     // Trigger the prompt alert
     page.locator('text=Click for JS Prompt').click();
 
     // Intercept the prompt and return a response
     page.on('dialog', async dialog => {
       expect(dialog.type()).toBe('prompt');
-      await dialog.accept('BFBJNH'); // Enter the value and accept
+      await dialog.accept('Nagalakshmi'); // Enter the value and accept
     });
     await page.waitForTimeout(5000)
   });
 
-  test.only('Playwright Test Case - test prompt Alert - Cancel', async ({ page }) => {
+  test('Playwright Test Case - test prompt Alert - Cancel', async ({ page }) => {
     // Trigger the prompt alert
     page.locator('text=Click for JS Prompt').click();
 
