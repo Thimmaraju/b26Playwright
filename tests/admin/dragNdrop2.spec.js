@@ -16,7 +16,7 @@ test.describe('Automation - Working With Drag and Drop', () => {
     const sourceIceCream = await page.locator('#menu-ice-cream');
     const targetPlateItems = await page.locator('#plate-items');
     
-    // Get the bounding boxes for each source and target elements
+    // Get the bounding boxes for each source and target elements// get x y corordinates 
     const boxFriedChicken = await sourceFriedChicken.boundingBox();
     const boxHamburger = await sourceHamburger.boundingBox();
     const boxIceCream = await sourceIceCream.boundingBox();
