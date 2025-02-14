@@ -1,4 +1,4 @@
-const { browser, test, expect,chromium } = require('@playwright/test');
+const { browser, test, expect, chromium } = require('@playwright/test');
 
 test.describe('Automation - Working With Elements', () => {
 
@@ -27,7 +27,7 @@ test.describe('Automation - Working With Elements', () => {
   })
 
 
-  test.only('handle tabs', async ({ page }) => {
+  test('handle tabs', async ({ page }) => {
     await page.goto('https://the-internet.herokuapp.com/windows');
 
     const [newTab] = await Promise.all([
@@ -84,35 +84,51 @@ test.describe('Automation - Working With Elements', () => {
     await page.click('[data-jsl10n="commons.name"]')
     await page.waitForTimeout(5000)
 
-   await expect(page).toHaveURL('https://commons.wikimedia.org/wiki/Main_Page')
-   await page.goBack() //
+    await expect(page).toHaveURL('https://commons.wikimedia.org/wiki/Main_Page')
+    await page.goBack() //
 
-  await page.locator("//span[text()='Wikivoyage']").click()
-  await page.waitForTimeout(5000)
-   await expect(page).toHaveURL('https://www.wikivoyage.org')
-   await page.goBack()
+    await page.locator("//span[text()='Wikivoyage']").click()
+    await page.waitForTimeout(5000)
+    await expect(page).toHaveURL('https://www.wikivoyage.org')
+    await page.goBack()
 
-   await page.waitForTimeout(5000)
+    await page.waitForTimeout(5000)
 
- await page.goForward()
+    await page.goForward()
 
   })
 
-  test("browse context test", async () => {
+  test.only("browse context test", async () => {
     const browser = await chromium.launch({ headless: false });
     const context1 = await browser.newContext();
     const context2 = await browser.newContext();
 
 
     const page = await context1.newPage();
-    await page.goto('https://www.demoblaze.com/index.html');
-    
+    await page.goto('https://opensource-demo.orangehrmlive.com/');
+    await page.locator('input[name="username"]').fill("Admin")
+    await page.locator("input[type='password']").fill("admin123")
+    await page.locator("input[type='password']").press("Enter")
+
+    await expect(page).toHaveURL('https://opensource-demo.orangehrmlive.com/web/index.php/dashboard/index')
+
+
 
     const page2 = await context2.newPage();
-    await page2.goto('https://flipkart.com');
+    await page2.goto('https://opensource-demo.orangehrmlive.com/');
+
+    await page2.goto('https://opensource-demo.orangehrmlive.com/');
+    await page2.locator('input[name="username"]').fill("rajug")
+    await page2.locator("input[type='password']").fill("Raju@1234")
+    await page2.locator("input[type='password']").press("Enter")
+
+    await expect(page).toHaveURL('https://opensource-demo.orangehrmlive.com/web/index.php/dashboard/index')
+
 
 
     console.log(browser.contexts().length);
+
+    await page.waitForTimeout(10000)
 
     await browser.close();
   });
