@@ -2,7 +2,12 @@
   "name": "b26playwright",
   "version": "1.0.0",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+
+       "command1" : "allure generate ./allure-results -o ./allure-report",
+       "command2" : "allure open ./allure-report",
+       "opentestreport": "npm run command1 && npm run command2"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
