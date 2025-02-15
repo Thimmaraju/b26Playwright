@@ -24,8 +24,8 @@ test.describe("Verify Login functionality", async () => {
     await page.locator('input[name="username"]').fill("Raju")
     //await page.locator('input[name="username"]').clear()
 
-    await page.locator('input[name="username"]').press("Control + A+ Backspace")
-   // await page.locator('input[name="username"]').press("Backspace")
+    // await page.locator('input[name="username"]').press("Control + A")
+    // await page.locator('input[name="username"]').press("Backspace")
 
    //await page.keyboard.press("locator", "Enter")
 

@@ -6,7 +6,7 @@ const path = require('path');
  * Read environment variables from file.
  * https://github.com/motdotla/dotenv
  */
- require('dotenv').config({ path: path.resolve(__dirname, '.env') });
+ require('dotenv').config();
 
 /**
  * @see https://playwright.dev/docs/test-configuration
@@ -14,7 +14,7 @@ const path = require('path');
 module.exports = defineConfig({
   testDir: './tests',
   globalTimeout: 10800*1000,
-  globalSetup : "./globalSetup.js",
+ // globalSetup : "./globalSetup.js",
   //timeout: 60 *1000, // Each test given 60 sec 
 
   expect: {
@@ -30,11 +30,24 @@ module.exports = defineConfig({
   /* Opt out of parallel tests on CI. */
   workers: process.env.CI ? 1 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: 'html',
+  //reporter: 'html',
+  reporter: "allure-playwright",
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('/')`. */
      baseURL: 'https://opensource-demo.orangehrmlive.com',
+
+    //API
+
+    //baseURL: 'https://restful-booker.herokuapp.com',
+
+    // extraHTTPHeaders: {
+    //   // We set this header per GitHub guidelines.
+    //   'Accept': 'application/vnd.github.v3+json',
+    //   // Add authorization token to all requests.
+    //   // Assuming personal access token available in the environment.
+    //   'Authorization': `token ${process.env.API_TOKEN}`,
+    // },
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on',
@@ -52,15 +65,15 @@ module.exports = defineConfig({
       
     // },
 
-    // {
-    //   name: 'firefox',
-    //   use: { ...devices['Desktop Firefox'] },
-    // },
+    {
+      name: 'firefox',
+      use: { ...devices['Desktop Firefox'] },
+    },
 
-    // {
-    //   name: 'webkit',
-    //   use: { ...devices['Desktop Safari'] },
-    // },
+    {
+      name: 'webkit',
+      use: { ...devices['Desktop Safari'] },
+    },
 
     /* Test against mobile viewports. */
     // {

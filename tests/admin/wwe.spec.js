@@ -112,7 +112,7 @@ test.describe('Automation - Working With Elements', () => {
     })
 
 
-    test.only('scroll to specific element', async ({ page }) => {
+    test('scroll to specific element', async ({ page }) => {
 
         await page.goto("https://www.imdb.com/chart/top/");
 
@@ -149,13 +149,17 @@ test.describe('Automation - Working With Elements', () => {
    
       })
 
-      test('Working with Shadow DOM2', async ({ page }) => {
+      test.only('Working with Shadow DOM2', async ({ page }) => {
 
       await page.goto('https://books-pwakit.appspot.com/')
       await page.locator('#input').fill('Science')
       await page.keyboard.press('Enter')
       await expect(page.locator('text=Before Big Science')).toBeVisible()
-   
+
+      await page.waitForTimeout(5000)
+      //await page.reload()
+
+      await page.keyboard.press('F5')
       })
 
 
