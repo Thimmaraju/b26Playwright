@@ -2,10 +2,15 @@
 const { test, expect } = require('@playwright/test');
 
 test('has title', async ({ page }) => {
+
+  test.slow()
   await page.goto('https://playwright.dev/');
 
   // Expect a title "to contain" a substring.
+
+  await expect.soft(page.locator('//img[@src2="img/logos/Browsers.png"]')).toBeVisible()
   await expect(page).toHaveTitle(/Playwright/);
+
 });
 
 test('get started link', async ({ page }) => {

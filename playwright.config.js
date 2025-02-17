@@ -15,7 +15,7 @@ module.exports = defineConfig({
   testDir: './tests',
   globalTimeout: 10800*1000,
  // globalSetup : "./globalSetup.js",
-  //timeout: 60 *1000, // Each test given 60 sec 
+  timeout: 60 *1000, // Each test given 60 sec 
 
   expect: {
     timeout: 15_000, // each expect will wait untill 15 sec before failing 
