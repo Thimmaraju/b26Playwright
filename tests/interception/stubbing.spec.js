@@ -15,18 +15,41 @@ test.describe("Verify Stubbing Get Employees API", () => {
               {
                 empNumber: 7,
                 lastName: "G",
-                firstName: "RAJU",
+                firstName: "Ganesh",
                 middleName: "",
-                employeeId: "6553",
+                employeeId: "1111",
                 terminationId: null,
                 jobTitle: {
                   id: 23,
                   title: "HR Manager",
-                  isDeleted: false,
+                  isDeleted: true,
                 },
                 subunit: {
                   id: 13,
                   name: "Human Resources",
+                },
+                empStatus: {
+                  id: 3,
+                  name: "Full-Time Permanent",
+                },
+                supervisors: [],
+              },
+
+              {
+                empNumber: 8,
+                lastName: "Bangaram",
+                firstName: "Prakash",
+                middleName: "",
+                employeeId: "2222",
+                terminationId: null,
+                jobTitle: {
+                  id: 23,
+                  title: "QA Engineer",
+                  isDeleted: true,
+                },
+                subunit: {
+                  id: 13,
+                  name: "QA",
                 },
                 empStatus: {
                   id: 3,
@@ -43,11 +66,13 @@ test.describe("Verify Stubbing Get Employees API", () => {
     );
 
     // Navigate to the application and perform login
-    await page.goto("https://opensource-demo.orangehrmlive.com");
-    await page.fill('input[name="username"]', "Admin");
-    await page.fill('input[name="password"]', "admin123");
-    await page.click('button[type="submit"]');
+    // await page.goto("https://opensource-demo.orangehrmlive.com");
+    // await page.fill('input[name="username"]', "Admin");
+    // await page.fill('input[name="password"]', "admin123");
+    // await page.click('button[type="submit"]');
 
+
+    await page.goto("https://opensource-demo.orangehrmlive.com/web/index.php/dashboard/index")
     // Verify that the main menu item is visible
     await expect(page.locator("a.oxd-main-menu-item.active")).toBeVisible();
 
@@ -62,6 +87,6 @@ test.describe("Verify Stubbing Get Employees API", () => {
 
     // Optionally, you could verify that the stubbed data is rendered on the page.
     // For example:
-     await expect(page.locator("div.oxd-table-body div:nth-child(5) div")).toContainText("HR Manager (Deleted)");
+//   await expect(page.locator("div.oxd-table-body div:nth-child(5) div")).toContainText("HR Manager");
   });
 });

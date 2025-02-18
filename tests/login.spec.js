@@ -8,6 +8,17 @@ let page;
 
 test.describe("Verify Login functionality", async () => {
 
+  test.beforeEach(async ({ browser }) => {
+
+    page = await browser.newPage()
+  
+    await page.goto('/web/index.php/auth/login');
+  })
+  
+  test.afterEach(async () => {
+  
+    // block of script  
+  })
 
   test('Verify logo visible',{ tag: "@smoke"},async () => {
 
@@ -77,17 +88,7 @@ test.describe("Verify Login functionality", async () => {
 
 })
 
-test.beforeEach(async ({ browser }) => {
 
-  page = await browser.newPage()
-
-  await page.goto('/web/index.php/auth/login');
-})
-
-test.afterEach(async () => {
-
-  // block of script  
-})
 
 
 

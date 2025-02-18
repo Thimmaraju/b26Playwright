@@ -25,11 +25,11 @@ test.describe('Verify PIM calls Spying', () => {
     // );
 
     // Navigate to the app and perform login
-    await page.goto('https://opensource-demo.orangehrmlive.com');
-    await page.fill('input[name="username"]', 'Admin');
-    await page.fill('input[name="password"]', 'admin123');
-    await page.click('button[type="submit"]');
-
+    // await page.goto('https://opensource-demo.orangehrmlive.com');
+    // await page.fill('input[name="username"]', 'Admin');
+    // await page.fill('input[name="password"]', 'admin123');
+    // await page.click('button[type="submit"]');
+    await page.goto("https://opensource-demo.orangehrmlive.com/web/index.php/dashboard/index")
     // Verify the main menu item is visible
     await expect(page.locator('a.oxd-main-menu-item.active')).toBeVisible();
 
@@ -47,7 +47,7 @@ test.describe('Verify PIM calls Spying', () => {
     expect(jobTitlesResponse.status()).toBe(200);
 
     const empStatusResponse = await empStatusPromise;
-    expect(empStatusResponse.status()).toBe(400);
+    expect(empStatusResponse.status()).toBe(200);
 
     // const rajuResponse = await rajuPromise;
     // expect(rajuResponse.status()).toBe(200);

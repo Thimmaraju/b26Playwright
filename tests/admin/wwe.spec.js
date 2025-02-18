@@ -154,7 +154,7 @@ test.describe('Automation - Working With Elements', () => {
       await page.goto('https://books-pwakit.appspot.com/')
       await page.locator('#input').fill('Science')
       await page.keyboard.press('Enter')
-      await expect(page.locator('text=Before Big Science')).toBeVisible()
+      await expect(page.locator('text=Before Big Science234')).toBeVisible()
 
       await page.waitForTimeout(5000)
       //await page.reload()

@@ -1,5 +1,8 @@
 import { test, expect } from '@playwright/test';
 
+import qadata from "../../testData/qa/qadata.json"
+import stagingdata from "../../testData/staging/stagingdata.json"
+
 test('test', async ({ page }) => {
   await page.goto('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login');
   

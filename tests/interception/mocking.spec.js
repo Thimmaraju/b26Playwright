@@ -10,9 +10,9 @@ test("Example for Mocking", async ({ page }) => {
       const url = new URL(originalRequest.url());
 
       // Modify query parameters as required
-      url.searchParams.set("limit", "5");
+      url.searchParams.set("limit", "2");
       url.searchParams.set("sortOrder", "DESC");
-      url.searchParams.set("sortField", "employee.lastName");
+      url.searchParams.set("sortField", "employee.employeeId");
 
       // Continue the request with modified query parameters
       await route.continue({ url: url.toString() });
@@ -20,11 +20,12 @@ test("Example for Mocking", async ({ page }) => {
   );
 
   // Navigate to the application and perform login
-  await page.goto("https://opensource-demo.orangehrmlive.com");
-  await page.fill('input[name="username"]', "Admin");
-  await page.fill('input[name="password"]', "admin123");
-  await page.click('button[type="submit"]');
-
+  // await page.goto("https://opensource-demo.orangehrmlive.com");
+  // await page.fill('input[name="username"]', "Admin");
+  // await page.fill('input[name="password"]', "admin123");
+  // await page.click('button[type="submit"]');
+  await page.goto("https://opensource-demo.orangehrmlive.com/web/index.php/dashboard/index")
+    
   // Verify that the main menu item is visible
   await expect(page.locator("a.oxd-main-menu-item.active")).toBeVisible();
 
